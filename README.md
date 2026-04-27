@@ -24,6 +24,7 @@ The agent is built as a state machine using LangGraph, with distinct nodes respo
     - Crops the frame to a specific Region of Interest (ROI) using `sharp`.
     - Sends the cropped image to the Ollama vision model with a specific prompt.
     - Interprets the model's text response to create a symbolic representation (e.g., `milk`, `amazon`, `none`).
+    - **Generates detailed perception metadata**, including which checks were performed and the AI's confidence.
 
 2.  **`logicNode` (The "Symbolic" part):**
     - Receives the symbolic state from the `visionNode`.
@@ -105,6 +106,12 @@ The agent is built as a state machine using LangGraph, with distinct nodes respo
     "arrivalTime": 1678886400000,
     "alertSent": false,
     "isResolved": false,
+    "perception_metadata": {
+      "presence_confirmed": true,
+      "milk_checked": true,
+      "amazon_checked": false,
+      "confidence_description": "Presence: no | Milk: yes"
+    },
     "elapsedMins": 5
   }
   ```
